@@ -2,99 +2,43 @@
         const products = [
             {
                 id: 1,
-                name: "Tenis Running UltraBoost",
-                price: 1299,
+                name: "Nike Dunk Low Retro",
+                price: 1500,
                 category: "tenis",
                 gender: "hombre",
-                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                image: "img/NIKE+DUNK+LOW+RETRO.jpg"
             },
             {
                 id: 2,
-                name: "Tenis Basketball AirMax",
-                price: 1599,
+                name: "Nike SB",
+                price: 1700,
                 category: "tenis",
                 gender: "hombre",
-                image: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                image: "img/NikeSB.jpg"
             },
             {
                 id: 3,
-                name: "Tenis Casual Urban",
-                price: 899,
+                name: "Nike Air Max Alpha Trainer",
+                price: 1400,
                 category: "tenis",
-                gender: "mujer",
-                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                gender: "hombre",
+                image: "img/nike-air-max-alpha-trainer.jpg"
             },
             {
                 id: 4,
-                name: "Playera Deportiva DryFit",
-                price: 349,
-                category: "playeras",
+                name: "Air Jordan 1 Mid Game Royal",
+                price: 2100,
+                category: "tenis",
                 gender: "mujer",
-                image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                image: "img/airJordan1MidGameRoyal.jpg"
             },
             {
                 id: 5,
-                name: "Playera Basketball Elite",
-                price: 429,
-                category: "playeras",
-                gender: "hombre",
-                image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            },
-            {
-                id: 6,
-                name: "Playera Running Aeroready",
-                price: 299,
-                category: "playeras",
+                name: "Air Jordan 1 Mid Legend Blue",
+                price: 2200,
+                category: "tenis",
                 gender: "mujer",
-                image: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            },
-            {
-                id: 7,
-                name: "Short Deportivo Flex",
-                price: 399,
-                category: "shorts",
-                gender: "hombre",
-                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            },
-            {
-                id: 8,
-                name: "Short Basketball Pro",
-                price: 459,
-                category: "shorts",
-                gender: "hombre",
-                image: "https://images.unsplash.com/photo-1590239926049-9b5b4d1e2d5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            },
-            {
-                id: 9,
-                name: "Short Running Aerodynamic",
-                price: 379,
-                category: "shorts",
-                gender: "mujer",
-                image: "https://images.unsplash.com/photo-1520256862855-398aa710b1a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            },
-            {
-                id: 10,
-                name: "Mochila Deportiva",
-                price: 599,
-                category: "accesorios",
-                gender: "hombre",
-                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            },
-            {
-                id: 11,
-                name: "Gorra Deportiva",
-                price: 249,
-                category: "accesorios",
-                gender: "mujer",
-                image: "https://images.unsplash.com/photo-1575428652377-a2d80dfd5cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-            },
-            {
-                id: 12,
-                name: "Medias Deportivas",
-                price: 99,
-                category: "accesorios",
-                gender: "mujer",
-                image: "https://images.unsplash.com/photo-1598908314732-537173e305d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                image: "img/airJordan1MidLegendBlue.jpg"
             }
         ];
         
