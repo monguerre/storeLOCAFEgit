@@ -6,15 +6,17 @@
                 price: 1500,
                 category: "tenis",
                 gender: "hombre",
-                image: "img/NIKE+DUNK+LOW+RETRO.jpg"
+                image: "img/NIKE+DUNK+LOW+RETRO.jpg",
+                talla: "27 28mx"
             },
             {
                 id: 2,
-                name: "Nike SB",
+                name: "Nike SB Heritage Vulc",
                 price: 1700,
                 category: "tenis",
                 gender: "hombre",
-                image: "img/NikeSB.jpg"
+                image: "img/NikeSB.jpg",
+                talla: "27 28mx"
             },
             {
                 id: 3,
@@ -22,23 +24,26 @@
                 price: 1400,
                 category: "tenis",
                 gender: "hombre",
-                image: "img/nike-air-max-alpha-trainer.jpg"
+                image: "img/nike-air-max-alpha-trainer.jpg",
+                talla: "26mx"
             },
             {
                 id: 4,
                 name: "Air Jordan 1 Mid Game Royal",
                 price: 2100,
                 category: "tenis",
-                gender: "mujer",
-                image: "img/airJordan1MidGameRoyal.jpg"
+                gender: "hombre",
+                image: "img/airJordan1MidGameRoyal.jpg",
+                talla: "27 28 mx"
             },
             {
                 id: 5,
                 name: "Air Jordan 1 Mid Legend Blue",
-                price: 2200,
+                price: 3200,
                 category: "tenis",
                 gender: "mujer",
-                image: "img/airJordan1MidLegendBlue.jpg"
+                image: "img/airJordan1MidLegendBlue.jpg",
+                talla: "27mx"
             }
         ];
         
