@@ -117,16 +117,23 @@
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
 
-                const formattedSize = product.talla
-                    ? product.talla.replace(/\s*mx\s*/gi, '').trim()
-                    : '';
+                const sizes = product.talla
+                    ? product.talla.replace(/\s*mx\s*/gi, '').trim().split(/\s+/)
+                    : [];
+
+                const sizeOptions = sizes.map(size => `
+                    <label class="size-option">
+                        <input type="checkbox" class="size-checkbox" name="size-${product.id}" value="${size}">
+                        ${size}
+                    </label>
+                `).join('');
 
                 productCard.innerHTML = `
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
                         <div class="product-category">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</div>
                         <h3 class="product-name">${product.name}</h3>
-                        <div class="product-size">Talla: ${formattedSize}</div>
+                        <div class="product-sizes">${sizeOptions}</div>
                         <div class="product-price">$${product.price.toFixed(2)}</div>
                         <button class="add-to-cart" data-id="${product.id}">Añadir al carrito</button>
                     </div>
@@ -138,26 +145,33 @@
             document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const productId = parseInt(e.target.dataset.id);
-                    addToCart(productId);
+                    const card = e.target.closest('.product-card');
+                    const selected = card.querySelector(`input[name="size-${productId}"]:checked`);
+                    if (!selected) {
+                        alert('Por favor selecciona una talla.');
+                        return;
+                    }
+                    addToCart(productId, selected.value);
                 });
             });
         }
 
         // Función para añadir al carrito
-        function addToCart(productId) {
+        function addToCart(productId, selectedSize) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
-            const existingItem = cart.find(item => item.id === productId);
+            const existingItem = cart.find(item => item.id === productId && item.size === selectedSize);
 
             if (existingItem) {
-                return; // No permitir más de uno del mismo producto
+                return; // No permitir más de uno del mismo producto con la misma talla
             } else {
                 cart.push({
                     id: product.id,
                     name: product.name,
                     price: product.price,
                     image: product.image,
+                    size: selectedSize,
                     quantity: 1
                 });
             }
@@ -166,8 +180,8 @@
         }
 
         // Función para quitar del carrito
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
+        function removeFromCart(productId, size) {
+            cart = cart.filter(item => !(item.id === productId && item.size === size));
             updateCartUI();
         }
         
@@ -193,8 +207,9 @@
                     <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-size">Talla: ${item.size}</div>
                         <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                        <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                        <button class="remove-item" data-id="${item.id}" data-size="${item.size}"><i class="fas fa-trash"></i></button>
                     </div>
                 `;
                 cartItems.appendChild(cartItem);
@@ -208,14 +223,15 @@
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', (e) => {
                     const productId = parseInt(e.target.closest('.remove-item').dataset.id);
-                    removeAllOfItem(productId);
+                    const size = e.target.closest('.remove-item').dataset.size;
+                    removeAllOfItem(productId, size);
                 });
             });
         }
-        
+
         // Función para eliminar todos los productos de un tipo del carrito
-        function removeAllOfItem(productId) {
-            cart = cart.filter(item => item.id !== productId);
+        function removeAllOfItem(productId, size) {
+            cart = cart.filter(item => !(item.id === productId && item.size === size));
             updateCartUI();
         }
         
@@ -226,7 +242,7 @@
             let message = "¡Hola! Estoy interesado en comprar los siguientes productos:%0A%0A";
             
             cart.forEach(item => {
-                message += `- ${item.name} - $${item.price.toFixed(2)}%0A`;
+                message += `- ${item.name} (Talla: ${item.size}) - $${item.price.toFixed(2)}%0A`;
             });
             
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
