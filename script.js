@@ -44,6 +44,33 @@
                 gender: "mujer",
                 image: "img/airJordan1MidLegendBlue.jpg",
                 talla: "27mx"
+            },
+            {
+                id: 6,
+                name: "New Balance 237",
+                price: 1900,
+                category: "tenis",
+                gender: "hombre",
+                image: "img/NB237.jpg",
+                talla: "27mx"
+            },
+            {
+                id: 7,
+                name: "New Balance 997H Mujer",
+                price: 1800,
+                category: "tenis",
+                gender: "mujer",
+                image: "img/NB997hMujer.jpg",
+                talla: "25mx"
+            },
+            {
+                id: 8,
+                name: "New Balance 997H Verde",
+                price: 1850,
+                category: "tenis",
+                gender: "hombre",
+                image: "img/NB997hverde.jpg",
+                talla: "28mx"
             }
         ];
         
