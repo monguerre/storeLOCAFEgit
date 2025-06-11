@@ -128,17 +128,12 @@
                         <h3 class="product-name">${product.name}</h3>
                         <div class="product-size">Talla: ${formattedSize}</div>
                         <div class="product-price">$${product.price.toFixed(2)}</div>
-                        <div class="quantity-controls">
-                            <button class="quantity-btn minus" data-id="${product.id}">-</button>
-                            <span class="quantity" data-id="${product.id}">0</span>
-                            <button class="quantity-btn plus" data-id="${product.id}">+</button>
-                        </div>
                         <button class="add-to-cart" data-id="${product.id}">Añadir al carrito</button>
                     </div>
                 `;
                 productsGrid.appendChild(productCard);
             });
-            
+
             // Agregar event listeners a los botones recién creados
             document.querySelectorAll('.add-to-cart').forEach(button => {
                 button.addEventListener('click', (e) => {
@@ -146,31 +141,17 @@
                     addToCart(productId);
                 });
             });
-            
-            document.querySelectorAll('.quantity-btn.plus').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
-                    addToCart(productId);
-                });
-            });
-            
-            document.querySelectorAll('.quantity-btn.minus').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
-                    removeFromCart(productId);
-                });
-            });
         }
-        
+
         // Función para añadir al carrito
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
-            
+
             const existingItem = cart.find(item => item.id === productId);
-            
+
             if (existingItem) {
-                existingItem.quantity += 1;
+                return; // No permitir más de uno del mismo producto
             } else {
                 cart.push({
                     id: product.id,
@@ -180,35 +161,14 @@
                     quantity: 1
                 });
             }
-            
+
             updateCartUI();
-            updateQuantityDisplay(productId, existingItem ? existingItem.quantity : 1);
         }
-        
+
         // Función para quitar del carrito
         function removeFromCart(productId) {
-            const existingItemIndex = cart.findIndex(item => item.id === productId);
-            
-            if (existingItemIndex !== -1) {
-                const existingItem = cart[existingItemIndex];
-                
-                if (existingItem.quantity > 1) {
-                    existingItem.quantity -= 1;
-                } else {
-                    cart.splice(existingItemIndex, 1);
-                }
-                
-                updateCartUI();
-                updateQuantityDisplay(productId, existingItem.quantity > 1 ? existingItem.quantity : 0);
-            }
-        }
-        
-        // Actualizar la visualización de cantidad en la tarjeta de producto
-        function updateQuantityDisplay(productId, quantity) {
-            const quantityElement = document.querySelector(`.quantity[data-id="${productId}"]`);
-            if (quantityElement) {
-                quantityElement.textContent = quantity;
-            }
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
         }
         
         // Actualizar la UI del carrito
@@ -233,13 +193,8 @@
                     <img src="${item.image}" alt="${item.name}" class="cart-item-image">
                     <div class="cart-item-details">
                         <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</div>
-                        <div class="cart-item-quantity">
-                            <button class="cart-quantity-btn minus" data-id="${item.id}">-</button>
-                            <span class="cart-quantity">${item.quantity}</span>
-                            <button class="cart-quantity-btn plus" data-id="${item.id}">+</button>
-                            <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
-                        </div>
+                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
                     </div>
                 `;
                 cartItems.appendChild(cartItem);
@@ -249,20 +204,6 @@
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             cartTotal.textContent = total.toFixed(2);
             
-            // Agregar event listeners a los botones del carrito
-            document.querySelectorAll('.cart-quantity-btn.minus').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
-                    removeFromCart(productId);
-                });
-            });
-            
-            document.querySelectorAll('.cart-quantity-btn.plus').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const productId = parseInt(e.target.dataset.id);
-                    addToCart(productId);
-                });
-            });
             
             document.querySelectorAll('.remove-item').forEach(button => {
                 button.addEventListener('click', (e) => {
@@ -276,7 +217,6 @@
         function removeAllOfItem(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCartUI();
-            updateQuantityDisplay(productId, 0);
         }
         
         // Función para generar el mensaje de WhatsApp
@@ -286,7 +226,7 @@
             let message = "¡Hola! Estoy interesado en comprar los siguientes productos:%0A%0A";
             
             cart.forEach(item => {
-                message += `- ${item.name} (${item.quantity} unidad${item.quantity > 1 ? 'es' : ''}) - $${(item.price * item.quantity).toFixed(2)}%0A`;
+                message += `- ${item.name} - $${item.price.toFixed(2)}%0A`;
             });
             
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
