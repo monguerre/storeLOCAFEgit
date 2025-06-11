@@ -7,7 +7,7 @@
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NIKE+DUNK+LOW+RETRO.jpg",
-                talla: "27 28mx"
+                talla: "27 28"
             },
             {
                 id: 2,
@@ -16,7 +16,7 @@
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NikeSB.jpg",
-                talla: "27 28mx"
+                talla: "27 28"
             },
             {
                 id: 3,
@@ -25,7 +25,7 @@
                 category: "tenis",
                 gender: "hombre",
                 image: "img/nike-air-max-alpha-trainer.jpg",
-                talla: "26mx"
+                talla: "26"
             },
             {
                 id: 4,
@@ -34,7 +34,7 @@
                 category: "tenis",
                 gender: "hombre",
                 image: "img/airJordan1MidGameRoyal.jpg",
-                talla: "27 28 mx"
+                talla: "27 28"
             },
             {
                 id: 5,
@@ -43,7 +43,7 @@
                 category: "tenis",
                 gender: "mujer",
                 image: "img/airJordan1MidLegendBlue.jpg",
-                talla: "27mx"
+                talla: "27"
             },
             {
                 id: 6,
@@ -52,7 +52,7 @@
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NB237.jpg",
-                talla: "27mx"
+                talla: "27"
             },
             {
                 id: 7,
@@ -61,7 +61,7 @@
                 category: "tenis",
                 gender: "mujer",
                 image: "img/NB997hMujer.jpg",
-                talla: "25mx"
+                talla: "25"
             },
             {
                 id: 8,
@@ -70,7 +70,7 @@
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NB997hverde.jpg",
-                talla: "28mx"
+                talla: "28"
             }
         ];
         
@@ -116,11 +116,17 @@
             filteredProducts.forEach(product => {
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card';
+
+                const formattedSize = product.talla
+                    ? product.talla.replace(/\s*mx\s*/gi, '').trim()
+                    : '';
+
                 productCard.innerHTML = `
                     <img src="${product.image}" alt="${product.name}" class="product-image">
                     <div class="product-info">
                         <div class="product-category">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</div>
                         <h3 class="product-name">${product.name}</h3>
+                        <div class="product-size">Talla: ${formattedSize}</div>
                         <div class="product-price">$${product.price.toFixed(2)}</div>
                         <div class="quantity-controls">
                             <button class="quantity-btn minus" data-id="${product.id}">-</button>
