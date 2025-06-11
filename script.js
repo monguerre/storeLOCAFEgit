@@ -3,16 +3,16 @@
             {
                 id: 1,
                 name: "Nike Dunk Low Retro",
-                price: 1500,
+                price: 2800,
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NIKE+DUNK+LOW+RETRO.jpg",
-                talla: "27 28"
+                talla: "26 27"
             },
             {
                 id: 2,
                 name: "Nike SB Heritage Vulc",
-                price: 1700,
+                price: 1800,
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NikeSB.jpg",
@@ -21,7 +21,7 @@
             {
                 id: 3,
                 name: "Nike Air Max Alpha Trainer",
-                price: 1400,
+                price: 3000,
                 category: "tenis",
                 gender: "hombre",
                 image: "img/nike-air-max-alpha-trainer.jpg",
@@ -30,47 +30,47 @@
             {
                 id: 4,
                 name: "Air Jordan 1 Mid Game Royal",
-                price: 2100,
+                price: 3200,
                 category: "tenis",
                 gender: "hombre",
                 image: "img/airJordan1MidGameRoyal.jpg",
-                talla: "27 28"
+                talla: "27"
             },
             {
                 id: 5,
                 name: "Air Jordan 1 Mid Legend Blue",
                 price: 3200,
                 category: "tenis",
-                gender: "mujer",
+                gender: "hombre",
                 image: "img/airJordan1MidLegendBlue.jpg",
                 talla: "27"
             },
             {
                 id: 6,
                 name: "New Balance 237",
-                price: 1900,
+                price: 2300,
                 category: "tenis",
-                gender: "hombre",
+                gender: "mujer",
                 image: "img/NB237.jpg",
-                talla: "27"
+                talla: "24 25"
             },
             {
                 id: 7,
                 name: "New Balance 997H Mujer",
-                price: 1800,
+                price: 2700,
                 category: "tenis",
                 gender: "mujer",
                 image: "img/NB997hMujer.jpg",
-                talla: "25"
+                talla: "26"
             },
             {
                 id: 8,
                 name: "New Balance 997H Verde",
-                price: 1850,
+                price: 2700,
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NB997hverde.jpg",
-                talla: "28"
+                talla: "26"
             }
         ];
         
@@ -279,7 +279,7 @@
             }
             
             const message = generateWhatsAppMessage();
-            const phoneNumber = "521234567890"; // Reemplaza con tu número real
+            const phoneNumber = "528445435287"; 
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
             
             window.open(whatsappUrl, '_blank');
