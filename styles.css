@@ -46,9 +46,9 @@
             gap: 10px;
         }
         
-        .logo i {
-            font-size: 2rem;
-            color: #4CAF50;
+        .logo img {
+            width: 40px;
+            height: auto;
         }
         
         .logo h1 {
