@@ -121,12 +121,15 @@
                     ? product.talla.replace(/\s*mx\s*/gi, '').trim().split(/\s+/)
                     : [];
 
-                const sizeOptions = sizes.map(size => `
-                    <label class="size-option">
-                        <input type="checkbox" class="size-checkbox" name="size-${product.id}" value="${size}">
-                        ${size}
-                    </label>
-                `).join('');
+                const singleSize = sizes.length === 1;
+                const sizeOptions = singleSize
+                    ? `<span class="single-size">${sizes[0] || ''}</span>`
+                    : sizes.map(size => `
+                        <label class="size-option">
+                            <input type="checkbox" class="size-checkbox" name="size-${product.id}" value="${size}">
+                            ${size}
+                        </label>
+                    `).join('');
 
                 productCard.innerHTML = `
                     <img src="${product.image}" alt="${product.name}" class="product-image">
@@ -146,11 +149,23 @@
                 button.addEventListener('click', (e) => {
                     const productId = parseInt(e.target.dataset.id);
                     const card = e.target.closest('.product-card');
-                    const selected = card.querySelector(`input[name="size-${productId}"]:checked`);
-                    if (!selected) {
-                        alert('Por favor selecciona una talla.');
-                        return;
+
+                    const product = products.find(p => p.id === productId);
+                    const sizes = product && product.talla
+                        ? product.talla.replace(/\s*mx\s*/gi, '').trim().split(/\s+/)
+                        : [];
+
+                    let selected;
+                    if (sizes.length === 1) {
+                        selected = { value: sizes[0] };
+                    } else {
+                        selected = card.querySelector(`input[name="size-${productId}"]:checked`);
+                        if (!selected) {
+                            alert('Por favor selecciona una talla.');
+                            return;
+                        }
                     }
+
                     addToCart(productId, selected.value);
                 });
             });
