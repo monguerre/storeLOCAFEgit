@@ -7,7 +7,7 @@
                 category: "tenis",
                 gender: "hombre",
                 image: "img/NIKE+DUNK+LOW+RETRO.jpg",
-                talla: "26 27"
+                talla: "27 28"
             },
             {
                 id: 2,
