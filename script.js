@@ -20,6 +20,15 @@
             },
             {
                 id: 3,
+                name: "Air Jordan 1 Mid Grises",
+                price: 3200,
+                category: "tenis",
+                gender: "hombre",
+                image: "img/airJordan1MidGrises.jpg",
+                talla: "29"
+            },
+            {
+                id: 4,
                 name: "Nike Air Max Alpha Trainer",
                 price: 3000,
                 category: "tenis",
@@ -28,7 +37,7 @@
                 talla: "26"
             },
             {
-                id: 4,
+                id: 5,
                 name: "Air Jordan 1 Mid Game Royal",
                 price: 3200,
                 category: "tenis",
@@ -37,7 +46,7 @@
                 talla: "27"
             },
             {
-                id: 5,
+                id: 6,
                 name: "Air Jordan 1 Mid Legend Blue",
                 price: 3200,
                 category: "tenis",
@@ -46,7 +55,7 @@
                 talla: "27"
             },
             {
-                id: 6,
+                id: 7,
                 name: "New Balance 237",
                 price: 2300,
                 category: "tenis",
@@ -55,7 +64,7 @@
                 talla: "24 25"
             },
             {
-                id: 7,
+                id: 8,
                 name: "New Balance 997H Mujer",
                 price: 2700,
                 category: "tenis",
@@ -64,7 +73,7 @@
                 talla: "26"
             },
             {
-                id: 8,
+                id: 9,
                 name: "New Balance 997H Verde",
                 price: 2700,
                 category: "tenis",
